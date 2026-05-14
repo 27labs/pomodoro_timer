@@ -128,6 +128,12 @@ class PomodoroController extends Notifier<PomodoroState> {
 
   void reset() {
     _timer?.cancel();
+
+    if (state.remaining < state.phase.duration) {
+      state = state.copyWith(remaining: state.phase.duration, isRunning: false);
+      return;
+    }
+
     state = PomodoroState.initial();
   }
 
