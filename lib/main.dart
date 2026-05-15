@@ -24,16 +24,12 @@ Future<void> main() async {
   if (!kIsWeb && Platform.isWindows) {
     await windowManager.ensureInitialized();
     const options = WindowOptions(
-      size: Size(520, 680),
-      minimumSize: Size(340, 460),
-      center: true,
       title: 'Pomodoro Timer',
       titleBarStyle: TitleBarStyle.hidden,
       backgroundColor: destijlWhite,
     );
     await windowManager.waitUntilReadyToShow(options, () async {
       await windowManager.show();
-      await windowManager.focus();
     });
 
     await localNotifier.setup(
